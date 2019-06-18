@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lesson_5_8"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Cursor="Wait">
         <TextBox 
-            HorizontalAlignment="Center" 
-            Margin="319,109,353,287" 
-            Text="Hello, WPF!" 
-            VerticalAlignment="Bottom" 
-            TextChanged="TextBox_TextChanged"/>
+            HorizontalAlignment="Center"                    
+                   Text=" Hello, WPF!" FontSize="36" VerticalAlignment="Center" Background="#FFF3F3D8" Cursor="Pen">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
     </Grid>
 </Window>
