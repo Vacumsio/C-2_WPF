@@ -6,13 +6,10 @@
         xmlns:local="clr-namespace:Lesson_5_8"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid Cursor="Wait">
-        <TextBox 
-            HorizontalAlignment="Center"                    
-                   Text=" Hello, WPF!" FontSize="36" VerticalAlignment="Center" Background="#FFF3F3D8" Cursor="Pen">
-            <TextBox.Effect>
-                <DropShadowEffect/>
-            </TextBox.Effect>
-        </TextBox>
+    <Grid Name="MainGrid">
+        <TextBlock x:Name="textBlock"  
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"                    
+                   Text=" Hello, WPF!" FontSize="36"/>
     </Grid>
 </Window>
