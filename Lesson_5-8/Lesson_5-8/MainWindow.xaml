@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="609,125,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="47,191,0,0" TextWrapping="Wrap" Text="Hello, WPF!" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
-
+        <TextBox 
+            HorizontalAlignment="Center" 
+            Margin="319,109,353,287" 
+            Text="Hello, WPF!" 
+            VerticalAlignment="Bottom" 
+            TextChanged="TextBox_TextChanged"/>
     </Grid>
 </Window>
