@@ -2,7 +2,7 @@
 
 namespace RealBigCompany
 {
-    public class Zone : INotifyPropertyChanged
+    public class Master : INotifyPropertyChanged
     {
 
         string departmentName;
@@ -17,7 +17,7 @@ namespace RealBigCompany
         }
         public int DepartmentId { get; set; }
 
-        public Zone(string Name, int Id)
+        public Master(string Name, int Id)
         {
             DepartmentName = Name;
             DepartmentId = Id;

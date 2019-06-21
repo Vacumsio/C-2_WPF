@@ -6,7 +6,7 @@ namespace RealBigCompany
     public class DataCenter
     {
         public ObservableCollection<Slave> EmployData { get; set; }
-        public ObservableCollection<Zone> DepData { get; set; }
+        public ObservableCollection<Master> DepData { get; set; }
         Random random = new Random();
 
         public void DeleteDepartment(int index)
@@ -31,11 +31,11 @@ namespace RealBigCompany
         public DataCenter(int CountDepartment, int CountEmployee)
         {
             EmployData = new ObservableCollection<Slave>();
-            DepData = new ObservableCollection<Zone>();
+            DepData = new ObservableCollection<Master>();
 
             for (int i = 0; i < CountDepartment; i++)
             {
-                DepData.Add(new Zone($"Департамент {i + 1}", i));
+                DepData.Add(new Master($"Департамент {i + 1}", i));
             }
 
             for (int i = 0; i < CountEmployee; i++)
