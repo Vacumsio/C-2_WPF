@@ -2,7 +2,7 @@
 
 namespace RealBigCompany
 {
-    public class Employee : INotifyPropertyChanged
+    public class Slave : INotifyPropertyChanged
     {
         public string firstName;
         public string FirstName
@@ -21,7 +21,7 @@ namespace RealBigCompany
         public int Age { get; set; }
         public int DepartamentId { get; private set; }
 
-        public Employee(string FName, string LName, int age, int DepId)
+        public Slave(string FName, string LName, int age, int DepId)
         {
             firstName = FName;
             LastName = LName;
@@ -33,7 +33,7 @@ namespace RealBigCompany
 
         public override string ToString()
         {
-            return $"{FirstName,7} {LastName,12} {Age,3} {DepartamentId,3}";
+            return $"{FirstName,1} {LastName,13} {Age,27} {DepartamentId,1}";
         }
     }
 }
