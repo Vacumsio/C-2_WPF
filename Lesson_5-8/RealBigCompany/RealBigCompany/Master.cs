@@ -5,22 +5,22 @@ namespace RealBigCompany
     public class Master : INotifyPropertyChanged
     {
 
-        string departmentName;
-        public string DepartmentName
+        string masterName;
+        public string MasterName
         {
-            get { return this.departmentName; }
+            get { return this.masterName; }
             set
             {
-                this.departmentName = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.DepartmentName)));
+                this.masterName = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.MasterName)));
             }
         }
-        public int DepartmentId { get; set; }
+        public int MasterId { get; set; }
 
         public Master(string Name, int Id)
         {
-            DepartmentName = Name;
-            DepartmentId = Id;
+            MasterName = Name;
+            MasterId = Id;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

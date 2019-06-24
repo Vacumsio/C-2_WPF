@@ -5,42 +5,43 @@ namespace RealBigCompany
 {
     public class DataCenter
     {
-        public ObservableCollection<Slave> EmployData { get; set; }
-        public ObservableCollection<Master> DepData { get; set; }
-        Random random = new Random();
+        public ObservableCollection<Slave> SlaveDc { get; set; }
+        public ObservableCollection<Master> MasterDc { get; set; }
 
-        public void DeleteDepartment(int index)
+        static Random rnd;
+
+        public void DeleteMaster(int index)
         {
-            for (int i = EmployData.Count - 1; i >= 0; i--)
+            for (int i = SlaveDc.Count - 1; i >= 0; i--)
             {
-                if (EmployData[i].DepartamentId == index)
+                if (SlaveDc[i].MasterId == index)
                 {
-                    EmployData.RemoveAt(i);
-                    //Console.WriteLine(i);
+                    SlaveDc.RemoveAt(i);
                 }
             }
-            for (int i = DepData.Count - 1; i >= 0; i--)
-                if (DepData[i].DepartmentId == index)
+
+            for (int i = MasterDc.Count - 1; i >= 0; i--)
+                if (MasterDc[i].MasterId == index)
                 {
-                    DepData.RemoveAt(i);
-                    //Console.WriteLine(">>> "+i);
+                    MasterDc.RemoveAt(i);
                 }
         }
 
 
-        public DataCenter(int CountDepartment, int CountEmployee)
+        public DataCenter(int countMaster, int countSlave)
         {
-            EmployData = new ObservableCollection<Slave>();
-            DepData = new ObservableCollection<Master>();
+            rnd = new Random();
+            SlaveDc = new ObservableCollection<Slave>();
+            MasterDc = new ObservableCollection<Master>();
 
-            for (int i = 0; i < CountDepartment; i++)
+            for (int i = 0; i < countMaster; i++)
             {
-                DepData.Add(new Master($"Департамент {i + 1}", i));
+                MasterDc.Add(new Master($"Хозяин {i + 1}", i));
             }
 
-            for (int i = 0; i < CountEmployee; i++)
+            for (int i = 0; i < countSlave; i++)
             {
-                EmployData.Add(new Slave($"Имя_{i + 1}", $"Фамилия_{i + 1}", random.Next(10, 65), random.Next(DepData.Count)));
+                SlaveDc.Add(new Slave($"Имя_{i + 1}", $"Фамилия_{i + 1}", rnd.Next(10, 65), rnd.Next(MasterDc.Count)));
             }
 
         }

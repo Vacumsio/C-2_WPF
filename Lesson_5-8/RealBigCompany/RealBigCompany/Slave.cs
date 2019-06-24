@@ -19,21 +19,21 @@ namespace RealBigCompany
 
         public string LastName { get; set; }
         public int Age { get; set; }
-        public int DepartamentId { get; private set; }
+        public int MasterId { get; private set; }
 
         public Slave(string FName, string LName, int age, int DepId)
         {
             firstName = FName;
             LastName = LName;
             Age = age;
-            this.DepartamentId = DepId;
+            this.MasterId = DepId;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public override string ToString()
         {
-            return $"{FirstName,1} {LastName,13} {Age,27} {DepartamentId,1}";
+            return $"{FirstName,1} {LastName,13} {Age,27} {MasterId,1}";
         }
     }
 }

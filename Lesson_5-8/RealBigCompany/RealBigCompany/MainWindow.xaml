@@ -8,16 +8,17 @@
         Title="Slaves Book" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="349*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="300*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="177*"/>
-            <ColumnDefinition Width="313*"/>
-            <ColumnDefinition Width="302*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="300*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox 
-            Name="Master" 
+        <ComboBox x:Name="Master"
+                  SelectedIndex="0"
+                  ItemsSource="{Binding MasterDc}"
             HorizontalAlignment="Left" 
             Margin="10,38,0,0" 
             VerticalAlignment="Top" 
@@ -58,27 +59,27 @@
             HorizontalAlignment="Left"
             Margin="10,10,0,0"
             VerticalAlignment="Top"
-            Width="75" Height="20"/>
+            Width="109" Height="20"/>
         <Button 
             Content="Убрать хозяина"
             HorizontalAlignment="Left" 
             Margin="10,38,0,0" 
             VerticalAlignment="Top" 
-            Width="75" Height="20"/>
+            Width="109" Height="20"/>
         <Button
             Content="Праслать нового раба"
             HorizontalAlignment="Left" 
             Margin="10,10,0,0" 
             Grid.Row="1" 
             VerticalAlignment="Top"
-            Width="75" Height="20"/>
+            Width="157" Height="20"/>
         <Button 
-            Content="Отправить раба лес валить"
+            Content="Отправить на лесоповал"
             HorizontalAlignment="Left" 
             Margin="10,36,0,0"
             Grid.Row="1"
             VerticalAlignment="Top" 
-            Width="75" Height="20"/>
+            Width="157" Height="20"/>
         <TextBlock 
             Grid.Column="2"
             HorizontalAlignment="Left"
@@ -93,7 +94,7 @@
             Grid.Row="1" 
             TextWrapping="Wrap" 
             Text="Доступные рабы" 
-            VerticalAlignment="Top" Height="16" Width="92"/>
+            VerticalAlignment="Top" Height="16" Width="120"/>
         <TextBlock 
             Grid.Column="1" 
             HorizontalAlignment="Left"
@@ -103,7 +104,15 @@
             Text="Имя раба" 
             VerticalAlignment="Top"
             Height="16" Width="118"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="12,98,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Фаминлия раба" VerticalAlignment="Top" Height="16" Width="118"/>
-
+        <TextBlock 
+            Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="12,98,0,0" 
+            Grid.Row="1" 
+            TextWrapping="Wrap" 
+            Text="Фамилия раба" 
+            VerticalAlignment="Top" 
+            Height="16" 
+            Width="118"/>
     </Grid>
 </Window>

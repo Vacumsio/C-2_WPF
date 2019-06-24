@@ -20,9 +20,14 @@ namespace RealBigCompany
     /// </summary>
     public partial class MainWindow : Window
     {
+        DataCenter data;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            data = new DataCenter(50, 1000);
+            this.DataContext = data;
         }
     }
 }
