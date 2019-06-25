@@ -29,5 +29,6 @@ namespace RealBigCompany
             data = new DataCenter(50, 1000);
             this.DataContext = data;
         }
+
     }
 }

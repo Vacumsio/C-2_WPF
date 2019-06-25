@@ -1,39 +1,91 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace RealBigCompany
 {
-    public class Slave : INotifyPropertyChanged
+    [Serializable]
+    public class Slave : ICloneable
     {
-        public string firstName;
-        public string FirstName
-        {
-            get => firstName;
+        /// <summary>
+        /// Имя, Фамилия, Возраст, Опыт работы
+        /// </summary>
+        public string name;
+        public string surname;
+        public int age;
+        public int experience;
 
+        #region Конструкторы
+        public Slave()
+        { }
+
+        public Slave(string _name, string _surname, int _age, int _exp)
+        {
+            this.Name = _name;
+            this.Surname = _surname;
+            this.Age = _age;
+            this.Experience = _exp;
+        }
+
+        #endregion
+
+        #region Свойства полей
+
+        public string Name
+        {
+            get => name;
             set
             {
-                firstName = value;
-                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.FirstName)));
+                if (value.Length >= 2) name = value;
+                else
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Name), "Имя должно быть длиннее двух символов");
+                }
             }
-
         }
-
-        public string LastName { get; set; }
-        public int Age { get; set; }
-        public int MasterId { get; private set; }
-
-        public Slave(string FName, string LName, int age, int DepId)
+        public string Surname
         {
-            firstName = FName;
-            LastName = LName;
-            Age = age;
-            this.MasterId = DepId;
+            get => surname;
+            set
+            {
+                if (value.Length >= 2) surname = value;
+                else
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Surname), "Фамилия должна быть длиннее двух символов");
+                }
+            }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public override string ToString()
+        public int Age
         {
-            return $"{FirstName,1} {LastName,13} {Age,27} {MasterId,1}";
+            get => age;
+            set
+            {
+                if (value >= 18 && value <= 65) age = value;
+                else
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Age), "Возраст должен быть в диапозоне от 18 до 65 лет");
+                }
+            }
         }
+        public int Experience
+        {
+            get => experience;
+            set
+            {
+                if (value <= Age) experience = value;
+                else
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Experience), "Стаж работы не может быть большеуказанного возраста");
+                }
+            }
+        }
+        #endregion
+
+        #region Метод интерфейса
+
+        public virtual object Clone()
+        {
+            return new Slave(this.Name, this.Surname, this.Age, this.Experience);
+        }
+        #endregion
     }
 }

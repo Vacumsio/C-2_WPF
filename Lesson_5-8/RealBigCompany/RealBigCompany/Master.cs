@@ -1,28 +1,44 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace RealBigCompany
 {
-    public class Master : INotifyPropertyChanged
+    public class Master : Notify
     {
+        private ObservableCollection<Slave> slaves = new ObservableCollection<Slave>;
 
-        string masterName;
-        public string MasterName
+        ///Поле и его свойство
+        public string name;
+        public string Name
         {
-            get { return this.masterName; }
+            get => name;
             set
             {
-                this.masterName = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.MasterName)));
+                if (value.Length >= 2) name = value;
+                else
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Name), "Имя должно быть длиннее двух символов");
+                }
             }
         }
-        public int MasterId { get; set; }
+        
+        #region Constructs
+        public Master() { }
 
-        public Master(string Name, int Id)
+        public Master(string name)
         {
-            MasterName = Name;
-            MasterId = Id;
+            Name = name;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public Master(Master m)
+        {
+            this.Name = m.Name;
+            this.slaves = m.slaves;
+        }
+        #endregion
+
+
+
     }
 }

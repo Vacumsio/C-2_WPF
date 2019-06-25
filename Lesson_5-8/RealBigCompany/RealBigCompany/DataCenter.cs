@@ -14,7 +14,7 @@ namespace RealBigCompany
         {
             for (int i = SlaveDc.Count - 1; i >= 0; i--)
             {
-                if (SlaveDc[i].MasterId == index)
+                if (SlaveDc[i].Experience == index)
                 {
                     SlaveDc.RemoveAt(i);
                 }
@@ -41,7 +41,7 @@ namespace RealBigCompany
 
             for (int i = 0; i < countSlave; i++)
             {
-                SlaveDc.Add(new Slave($"Имя_{i + 1}", $"Фамилия_{i + 1}", rnd.Next(10, 65), rnd.Next(MasterDc.Count)));
+                SlaveDc.Add(new Slave($"Имя_{i + 1}", $"Фамилия_{i + 1}", rnd.Next(18, 65), rnd.Next(15)));
             }
 
         }
