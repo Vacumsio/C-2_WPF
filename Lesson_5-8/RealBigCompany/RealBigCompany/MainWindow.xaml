@@ -51,7 +51,7 @@
         <ListBox 
             x:Name="Slaves"
             SelectedIndex="0"               
-            ItemsSource="{Binding SlaveDc}"  
+            ItemsSource="{Binding SelectedItems.SlaveDc}"  
             HorizontalAlignment="Left" 
             Height="257" 
             Margin="11,10,0,0" 

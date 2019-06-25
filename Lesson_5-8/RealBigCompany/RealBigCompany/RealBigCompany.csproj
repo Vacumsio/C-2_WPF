@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BaseWindow.cs" />
+    <Compile Include="IClose.cs" />
     <Compile Include="MainWindow.xaml.cs" />
     <Compile Include="Notify.cs" />
     <Compile Include="Slave.cs" />

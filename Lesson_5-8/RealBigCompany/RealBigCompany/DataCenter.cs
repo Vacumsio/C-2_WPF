@@ -19,14 +19,7 @@ namespace RealBigCompany
                     SlaveDc.RemoveAt(i);
                 }
             }
-
-            for (int i = MasterDc.Count - 1; i >= 0; i--)
-                if (MasterDc[i].MasterId == index)
-                {
-                    MasterDc.RemoveAt(i);
-                }
         }
-
 
         public DataCenter(int countMaster, int countSlave)
         {
@@ -36,15 +29,13 @@ namespace RealBigCompany
 
             for (int i = 0; i < countMaster; i++)
             {
-                MasterDc.Add(new Master($"Хозяин {i + 1}", i));
+                MasterDc.Add(new Master($"Хозяин {i + 1}"));
             }
 
             for (int i = 0; i < countSlave; i++)
             {
                 SlaveDc.Add(new Slave($"Имя_{i + 1}", $"Фамилия_{i + 1}", rnd.Next(18, 65), rnd.Next(15)));
             }
-
         }
-
     }
 }

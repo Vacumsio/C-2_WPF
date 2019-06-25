@@ -4,9 +4,10 @@ using System.ComponentModel;
 
 namespace RealBigCompany
 {
+    [Serializable]
     public class Master : Notify
     {
-        private ObservableCollection<Slave> slaves = new ObservableCollection<Slave>;
+        public ObservableCollection<Slave> Slaves { get; set; } = new ObservableCollection<Slave>();
 
         ///Поле и его свойство
         public string name;
@@ -26,19 +27,37 @@ namespace RealBigCompany
         #region Constructs
         public Master() { }
 
-        public Master(string name)
+        public Master(string _name)
         {
-            Name = name;
+            Name = _name;
         }
 
         public Master(Master m)
         {
             this.Name = m.Name;
-            this.slaves = m.slaves;
+            this.Slaves = m.Slaves;
         }
         #endregion
 
+        #region Methods
+        public void EditSlave(int index, Master slave)
+        {
+            if (index >= 0 && index < Slaves.Count) Slaves[index] = slave;
+            OnPropertyChanged(nameof(Slaves));
+        }
 
-
+        public void RemoveSlave(int index)
+        {
+            if (index >= 0 && index < Slaves.Count) Slaves.RemoveAt(index);
+            OnPropertyChanged(nameof(Slaves));
+        }
+        public void AddSlave(Master slave)
+        {
+            if (Slaves.Contains(slave))
+                throw new ArgumentOutOfRangeException(nameof(Master.Name), "Такой работник уже существует");
+            Slaves.Add(slave);
+            OnPropertyChanged(nameof(Slaves));
+        }
+        #endregion
     }
 }

@@ -86,6 +86,11 @@ namespace RealBigCompany
         {
             return new Slave(this.Name, this.Surname, this.Age, this.Experience);
         }
+
+        public static implicit operator Slave(Master v)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }
