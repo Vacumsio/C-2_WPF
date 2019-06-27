@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
+
 namespace RealBigCompany
 {
-    class BaseWindow: Window
+    public class BaseDialogWindow : Window
     {
-        public BaseWindow()
+        public BaseDialogWindow()
         {
             DataContextChanged += OnDataContextChanged;
 

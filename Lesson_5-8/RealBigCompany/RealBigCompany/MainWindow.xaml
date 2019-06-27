@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RealBigCompany"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="Slaves Book" Height="450" Width="800" MinHeight="200" MinWidth="600">
+        Title="MainWindow" Height="450" Width="800" MinHeight="200" MinWidth="400">
 
+    <Window.DataContext>
+        <local:ViewModelMV/>
+    </Window.DataContext>
     <Window.Resources>
         <Style TargetType="Button" x:Key="GelButton" >
             <Setter Property="Margin" Value="7 5 7 5"/>
@@ -14,7 +18,7 @@
             <Setter Property="VerticalAlignment" Value="Stretch"/>
         </Style>
     </Window.Resources>
-    <Grid Margin="3 0 3 3">
+    <Grid Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="20"/>
@@ -25,65 +29,79 @@
             <ColumnDefinition Width="*" MinWidth="150"/>
             <ColumnDefinition Width="*" MinWidth="200"/>
         </Grid.ColumnDefinitions>
-        <Menu  Height="30" VerticalAlignment="Top" Grid.ColumnSpan="2">
+        <GridSplitter Grid.Column="0" Grid.RowSpan="3" ShowsPreview="False" Width="2"
+                      HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+        <GridSplitter Grid.Column="1" Grid.RowSpan="3" ShowsPreview="False" Width="2"
+                      HorizontalAlignment="Left" VerticalAlignment="Stretch" />
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="btnAddDepartment" Content="Добавить" Style="{StaticResource GelButton}" Command="{Binding AddDepartmentCommand}" Click="BtnAddDepartment_Click"/>
+            <Button Name="btnRemoveDepartment" Content="Удалить" Grid.Column="1" Style="{StaticResource GelButton}" Command="{Binding RemoveDepartmentCommand}"/>
+            <Button Name="btnEditDepartment" Content="Изменить название" Grid.Row="1" Style="{StaticResource GelButton}" Command="{Binding EditNameDepartmentCommand}"/>
+
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="btnAddEmployee" Content="Добавить" Style="{StaticResource GelButton}" Command="{Binding AddEmployeeCommand}"/>
+            <Button Name="btnRemoveEmployee" Content="Удалить" Grid.Column="1" Style="{StaticResource GelButton}" Command="{Binding RemoveEmployeeCommand}"/>
+            <Button Name="btnEditEmployee" Content="Редактировать" Grid.Row="1" Style="{StaticResource GelButton}" Command="{Binding EditEmployeeCommand}"/>
+            <Button Name="btnMoveEmployee" Content="Перенести" Grid.Row="1" Grid.Column="1" Style="{StaticResource GelButton}" Command="{Binding MoveEmployeeCommand}"/>
+        </Grid>
+
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" FontSize="14" FontWeight="Heavy">Отделы</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" FontSize="14" FontWeight="Heavy">Сотрудники</TextBlock>
+
+        <ListBox Name="lstBoxDepartments" Grid.Row="2" Margin="3" 
+                 ItemsSource="{Binding Departments}" 
+                 SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="depName">
+                            <TextBlock.Text>
+                                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged" />
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox Name="lstBoxemployees" Grid.Row="2" Grid.Column="1" Margin="3" 
+                 ItemsSource="{Binding SelectedItem.Employees}" 
+                 SelectedIndex="{Binding SelectedIndexEmployee, Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" Margin="3"/>
+                        <TextBlock Text="{Binding SurName}" Margin="3"/>
+                        <TextBlock Text="{Binding Profession}" Margin="3"/>
+                        <TextBlock Text="{Binding Age}" Margin="3"/>
+                        <TextBlock Text="{Binding Experience}" Margin="3"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Menu Height="30" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Отрыть БД" Command="{Binding OpenCommand}"/>
             <MenuItem Header="Сохранить БД" Command="{Binding SaveCommand}"/>
             <MenuItem Header="Выход" Command="{Binding ExitCommand}"/>
         </Menu>
-        <TextBlock 
-            Grid.Column="0" Grid.Row="1" 
-            HorizontalAlignment="Center" FontSize="14" FontWeight="Heavy"
-            Text="Хозяева" />
-        <TextBlock 
-            Grid.Column="1" Grid.Row="1" 
-            HorizontalAlignment="Center" FontSize="14" FontWeight="Heavy"
-            Text="Рабы" />
-        <ListBox 
-            x:Name="Masters"
-            SelectedIndex="0"
-            ItemsSource="{Binding MasterDc}"            
-            HorizontalAlignment="Left" 
-            Height="257" 
-            Margin="10,10,0,0" 
-            VerticalAlignment="Top"
-            Width="376"
-            Grid.Row="2"/>
-        <ListBox 
-            x:Name="Slaves"
-            SelectedIndex="0"               
-            ItemsSource="{Binding SelectedItems.SlaveDc}"  
-            HorizontalAlignment="Left" 
-            Height="257" 
-            Margin="11,10,0,0" 
-            VerticalAlignment="Top"
-            Width="376"
-            Grid.Row="2" Grid.Column="1"/>
-        <Button 
-            Content="Добавить хозяина"
-            HorizontalAlignment="Left"
-            Margin="10,45,0,0"
-            VerticalAlignment="Top"
-            Width="109" Height="20" Grid.Row="3"/>
-        <Button
-            Content="Убрать хозяина"
-            HorizontalAlignment="Left" 
-            Margin="10,10,0,0" 
-            VerticalAlignment="Top" 
-            Width="109" Height="20" Grid.Row="3"/>
-        <Button
-            Content="Праслать нового раба"
-            HorizontalAlignment="Left" 
-            Margin="10,10,0,0" 
-            Grid.Row="3" 
-            VerticalAlignment="Top"
-            Width="158" Height="20" Grid.Column="1"/>
-        <Button 
-            Content="Отправить на лесоповал"
-            HorizontalAlignment="Left" 
-            Margin="11,45,0,0"
-            Grid.Row="3"
-            VerticalAlignment="Top" 
-            Width="157" Height="20" Grid.Column="1"/>
-
     </Grid>
 </Window>
