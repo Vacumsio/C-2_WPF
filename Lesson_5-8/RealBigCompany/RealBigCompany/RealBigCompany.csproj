@@ -55,18 +55,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MainWindow.xaml.cs" />
-    <Compile Include="Slave.cs" />
-    <Compile Include="Master.cs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Compile Include="AddEmployeeViewModel.cs" />
+    <Compile Include="AddEmployeeWindow.xaml.cs">
+      <DependentUpon>AddEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewDepartmentViewModel.cs" />
+    <Compile Include="AddNewDepartmentWindow.xaml.cs">
+      <DependentUpon>AddNewDepartmentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDepartment.cs" />
+    <Compile Include="BaseDialogWindow.cs" />
+    <Compile Include="BaseEmployee.cs" />
+    <Compile Include="CollectionDepartments.cs" />
+    <Compile Include="DialogWindowViewModel.cs" />
+    <Compile Include="IClose.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Notify.cs" />
+    <Compile Include="ProfessionsEnum.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="SelectDepartmentViewModel.cs" />
+    <Compile Include="SelectDepartmentWindow.xaml.cs">
+      <DependentUpon>SelectDepartmentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModelMV.cs" />
+    <Page Include="AddEmployeeWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddNewDepartmentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataCenter.cs" />
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectDepartmentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

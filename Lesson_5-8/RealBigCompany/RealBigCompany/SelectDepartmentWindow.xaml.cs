@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace RealBigCompany
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для SelectDepartmentWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SelectDepartmentWindow : BaseDialogWindow
     {
-        public MainWindow()
+        public SelectDepartmentWindow()
         {
             InitializeComponent();
-        }
-
-        private void BtnAddDepartment_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
