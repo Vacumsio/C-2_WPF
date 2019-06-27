@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lesson_5_8.Properties
+namespace RealBigCompany.Properties
 {
 
 

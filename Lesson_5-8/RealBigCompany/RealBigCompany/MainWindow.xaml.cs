@@ -13,21 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lesson_5_8
+namespace RealBigCompany
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        DataCenter data;
+
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            data = new DataCenter(50, 1000);
+            this.DataContext = data;
         }
     }
 }
